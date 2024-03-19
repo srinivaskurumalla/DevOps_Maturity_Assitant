@@ -1,1 +1,164 @@
-<p>configuration-management works!</p>
+<h2 class="title">Configuration Management</h2>
+<table class="table table-bordered mat-elevation-z8 mt-3">
+    <thead>
+        <tr>
+            <th>Practice Stage</th>
+            <th>Source Code Management</th>
+            <th>Stage Score</th>
+            <th>Points</th>
+            <th>Account Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Basic</th>
+            <td>Source code management is not done.</td>
+            <td>1</td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="val1" value="1" [(ngModel)]="selectedScore1_1"
+                        matTooltip="1" [matTooltipPosition]="'right'">
+                </div>
+            </td>
+           
+          <td rowspan="5"> {{ selectedScore1_1 }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Initial</th>
+            <td>We use source code management for application code.</td>
+            <td>3</td>
+
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="val1" value="3" [(ngModel)]="selectedScore1_1"
+                        matTooltip="3" [matTooltipPosition]="'right'">
+                </div>
+            </td>
+
+        </tr>
+        <tr>
+            <th scope="row">Developed</th>
+            <td>(Initial) + We save configuration files, database scripts, and infrastructure code.</td>
+            <td>5</td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="val1" value="5" [(ngModel)]="selectedScore1_1"
+                        matTooltip="5" [matTooltipPosition]="'right'">
+                </div>
+            </td>
+
+        </tr>
+        <tr>
+            <th scope="row">Mature</th>
+            <td>(Developing) + We save test projects.</td>
+            <td>8</td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="val1" value="8" [(ngModel)]="selectedScore1_1"
+                        matTooltip="8" [matTooltipPosition]="'right'">
+                </div>
+            </td>
+
+        </tr>
+        <tr>
+            <th scope="row">Optimized</th>
+            <td>(Mature) + We save our builds, containers and VMs.</td>
+            <td>10</td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="val1" value="10" [(ngModel)]="selectedScore1_1"
+                        matTooltip="10" [matTooltipPosition]="'right'">
+                </div>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+<table class="table table-bordered mat-elevation-z8 mt-3">
+    <thead>
+        <tr>
+            <th>Practice Stage</th>
+            <th>Source code branching strategy
+            </th>
+            <th>Stage Score</th>
+            <th>Points</th>
+            <th>Account Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Basic</th>
+            <td>We currently have no source code branching strategy.
+            </td>
+            <td>1</td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="val2" value="1" [(ngModel)]="selectedScore1_2"
+                        matTooltip="1" [matTooltipPosition]="'right'">
+                </div>
+            </td>
+           
+          <td rowspan="5"> {{ selectedScore1_2 }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Initial</th>
+            <td>We have multiple copies of source code.
+            </td>
+            <td>3</td>
+
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="val2" value="3" [(ngModel)]="selectedScore1_2"
+                        matTooltip="3" [matTooltipPosition]="'right'">
+                </div>
+            </td>
+
+        </tr>
+        <tr>
+            <th scope="row">Developed</th>
+            <td>We use a centralized, single point of entry for any changes we make to our code.
+            </td>
+            <td>5</td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="val2" value="5" [(ngModel)]="selectedScore1_2"
+                        matTooltip="5" [matTooltipPosition]="'right'">
+                </div>
+            </td>
+
+        </tr>
+        <tr>
+            <th scope="row">Mature</th>
+            <td>We use a feature-branch workflow where each branch is dedicated to a feature.
+            </td>
+            <td>8</td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="val2" value="8" [(ngModel)]="selectedScore1_2"
+                        matTooltip="8" [matTooltipPosition]="'right'">
+                </div>
+            </td>
+
+        </tr>
+        <tr>
+            <th scope="row">Optimized</th>
+            <td>We use a robust branching structure where branches are created for features, hot-fixes and releases, leading to a trunk for final code.
+            </td>
+            <td>10</td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="val2" value="10" [(ngModel)]="selectedScore1_2"
+                        matTooltip="10" [matTooltipPosition]="'right'">
+                </div>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+<div class="text-center">
+    <button type="button" class="btn btn-primary btn-sm me-2" [disabled]="!selectedScore1_1   || !selectedScore1_2 "
+        (click)="save()">Save</button>
+    <a type="button" class="btn btn-secondary btn-sm" [routerLink]="['/feature/ci']">Next</a>
+    <button class="btn" (click)="resetRadioButtons()">Reset</button>
+
+</div>

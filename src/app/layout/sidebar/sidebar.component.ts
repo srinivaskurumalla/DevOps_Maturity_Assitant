@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DbService } from 'src/app/services/db.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   selectedOption: boolean = false;
   color = ''
-  constructor() { }
+  constructor(private dbService:DbService) { }
 
 
   ngOnInit(): void {
@@ -18,6 +19,9 @@ export class SidebarComponent implements OnInit {
   logout(): void {
     //this.authenticationService.logout();
   }
+  // select(selectedItem: string){
+  //   this.dbService.selecteMenu(selectedItem)
+  // }
   selectedItem(selectedItem: string): void {
     debugger
 

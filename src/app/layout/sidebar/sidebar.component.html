@@ -1,68 +1,42 @@
-<div class="container-fluid">
-    <div class="row flex-nowrap">
-        <div class="col-md-4 col-lg-4 col-xl-3 px-sm-2 px-0 bgClass">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline text-black">Menu</span>
-                </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a [routerLink]="['/feature/config']"class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Configuration Management</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a [routerLink]="['/feature/ci']" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Continuous Integration</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a [routerLink]="['/feature/cat']" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Continuous Automated Testing</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a [routerLink]="['/feature/iac']" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Infrastructure as code</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a [routerLink]="['/feature/cdd']" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Cont Delivery & Deployment</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a [routerLink]="['/feature/cm']" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Continuous Monitoring</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a [routerLink]="['/feature/cs']" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Continuous Security</span>
-                        </a>
-                    </li>
-                   
-                </ul>
-                <hr>
-                <!-- <div class="dropdown pb-4">
-                    <a [routerLink]="['/feature/config']" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1">loser</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                        <li><a class="dropdown-item" [routerLink]="['/feature/config']">New project...</a></li>
-                        <li><a class="dropdown-item" [routerLink]="['/feature/config']">Settings</a></li>
-                        <li><a class="dropdown-item" [routerLink]="['/feature/config']">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" [routerLink]="['/feature/config']">Sign out</a></li>
-                    </ul>
-                </div> -->
-            </div>
-        </div>
-        <div class="col py-3">
-            <router-outlet></router-outlet>
-        </div>
-    </div>
-</div>
+
+<mat-nav-list class="" >
+      <mat-list>
+        <a mat-list-item [routerLink]="['/feature/config']"
+          [ngStyle]="{'color': color === 'config' ? 'red' : ''}"
+          (click)="selectedItem('config')">Configuration Management</a>
+      </mat-list>
+      <mat-list>
+        <a mat-list-item [routerLink]="['/feature/ci']"
+          [ngStyle]="{'color': color === 'ci' ? 'red' : ''}"
+          (click)="selectedItem('ci')">Continuous Integration</a>
+      </mat-list>
+      <mat-list>
+        <a mat-list-item [routerLink]="['/feature/cat']"
+          [ngStyle]="{'color': color === 'cat' ? 'red' : ''}"
+          (click)="selectedItem('cat')">Continuous Automated Testing</a>
+      </mat-list>
+      <mat-list>
+        <a mat-list-item [routerLink]="['/feature/iac']"
+          [ngStyle]="{'color': color === 'iac' ? 'red' : ''}"
+          (click)="selectedItem('iac')">Infrastructure as code</a>
+      </mat-list>
+      <mat-list>
+        <a mat-list-item [routerLink]="['/feature/cdd']"
+          [ngStyle]="{'color': color === 'cdd' ? 'red' : ''}"
+          (click)="selectedItem('cdd')">Cont Delivery & Deployment</a>
+      </mat-list>
+      <mat-list>
+        <a mat-list-item [routerLink]="['/feature/cm']"
+          [ngStyle]="{'color': color === 'cm' ? 'red' : ''}"
+          (click)="selectedItem('cm')">Continuous Monitoring</a>
+      </mat-list>
+      <mat-list>
+        <a mat-list-item [routerLink]="['/feature/cs']"
+          [ngStyle]="{'color': color === 'cs' ? 'red' : ''}"
+          (click)="selectedItem('cs')">Continuous Security</a>
+      </mat-list>
+  
+  </mat-nav-list>
+  
+  
+  

@@ -12,6 +12,9 @@ import { IACComponent } from './components/feature1/iac/iac.component';
 import { CDDComponent } from './components/feature1/cdd/cdd.component';
 import { CMComponent } from './components/feature1/cm/cm.component';
 import { CSComponent } from './components/feature1/cs/cs.component';
+import { FormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +25,16 @@ import { CSComponent } from './components/feature1/cs/cs.component';
     IACComponent,
     CDDComponent,
     CMComponent,
-    CSComponent
+    CSComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LayoutModule
+    LayoutModule,
+    FormsModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

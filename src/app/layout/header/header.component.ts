@@ -10,7 +10,6 @@ export class HeaderComponent {
   @Output() sidebarToggle = new EventEmitter<void>();
   // @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
 
-  firstLetter: any 
   constructor(private router: Router) { }
 
   toggleSidebar() {

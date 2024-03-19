@@ -1,4 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+    width: 99.6%;
+    padding: 5px;
+
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.table .table-header tr th {
+    background-color: rgba(88, 77, 159, 0.263);
+}
+
+.title {
+    text-align: center;
+    color: blue;
+}
+
+td[rowspan] {
+    vertical-align: middle;
+    text-align: center;
+    font-size:xx-large;
+    color: green;
+  }
