@@ -1,13 +1,15 @@
 <div class="content">
-<h2 class="title">Configuration Management</h2>
-<app-table [data]="table1" [identifier]="table1[0].stageDef!" (selectedValuesChange)="updateSelectedValues($event)">
-</app-table>
-<app-table [data]="table2" [identifier]="table2[0].stageDef!" (selectedValuesChange)="updateSelectedValues($event)">
-</app-table>
+    <h2 class="title">Configuration Management</h2>
+    <app-table [data]="table1" [identifier]="table1[0].stageDef!" (selectedValuesChange)="updateSelectedValues($event)">
+    </app-table>
+    <app-table [data]="table2" [identifier]="table2[0].stageDef!" (selectedValuesChange)="updateSelectedValues($event)">
+    </app-table>
 </div>
-<div class="text-center">
-    <button type="button" class="btn btn-primary btn-sm me-2" (click)="saveAll()">Save</button>
-    <a type="button" class="btn btn-secondary btn-sm" [routerLink]="['/feature/ci']">Next</a>
-    <!-- <button class="btn" (click)="resetRadioButtons()">Reset</button> -->
 
+
+<div class="footer">
+    <div class="text-center">
+        <button type="button" class="btn btn-primary btn-sm me-2" (click)="saveAll()">Save</button>
+        <a type="button" class="btn btn-secondary btn-sm" [routerLink]="['/feature/ci']">Next</a>
+    </div>
 </div>

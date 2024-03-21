@@ -11,10 +11,12 @@
 <app-table [data]="table5" [identifier]="table5[0].stageDef!" (selectedValuesChange)="updateSelectedValues($event)">
 </app-table>
 
-<div class="text-center">
-    <a type="button" class="btn btn-secondary btn-sm me-2" [routerLink]="['/feature/config']">Previous</a>
 
-    <button type="button" class="btn btn-primary btn-sm me-2" (click)="saveAll()">Save</button>
-    <a type="button" class="btn btn-secondary btn-sm" [routerLink]="['/feature/cat']">Next</a>
+<div class="footer">
+    <div class="text-center">
+        <a type="button" class="btn btn-secondary btn-sm me-2" [routerLink]="['/feature/config']">Previous</a>
 
+        <button type="button" class="btn btn-primary btn-sm me-2" (click)="saveAll()">Save</button>
+        <a type="button" class="btn btn-secondary btn-sm" [routerLink]="['/feature/cat']">Next</a>
+    </div>
 </div>
