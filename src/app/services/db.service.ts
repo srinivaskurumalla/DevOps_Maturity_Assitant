@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
 
-  constructor() { }
+
   isSidebarOpen: boolean = true
   selectedItem: string = '/feature/config'
   color = ''
-  // selecteMenu(selectedItem: string): void {
-  //   debugger
+  private selectedMenuItemSubject = new BehaviorSubject<string>('');
+  selectedMenuItem$ = this.selectedMenuItemSubject.asObservable();
 
-  //   this.color = selectedItem;
-  //   localStorage.setItem('selectedItemColor', this.color);
-  // }
+  allScores: { item: string, identifier: string, value: number }[] = []
+
+  constructor() { }
+
+  setSelectedMenuItem(menuItem: string) {
+    this.selectedMenuItemSubject.next(menuItem);
+  }
 }

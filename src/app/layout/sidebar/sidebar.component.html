@@ -1,20 +1,26 @@
 
-<mat-nav-list class="" >
+<mat-nav-list class="sidebar" >
+      
       <mat-list>
-        <a mat-list-item [routerLink]="['/feature/config']"
-          [ngStyle]="{'color': color === 'config' ? 'red' : ''}"
-          (click)="selectedItem('config')">Configuration Management</a>
+        <mat-list-item [routerLink]="['/feature/config']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" >
+            Configuration Management
+        </mat-list-item>
       </mat-list>
+      
       <mat-list>
-        <a mat-list-item [routerLink]="['/feature/ci']"
-          [ngStyle]="{'color': color === 'ci' ? 'red' : ''}"
-          (click)="selectedItem('ci')">Continuous Integration</a>
+        <mat-list-item [routerLink]="['/feature/ci']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          Continuous Integration
+        </mat-list-item>
       </mat-list>
+      
+    
       <mat-list>
-        <a mat-list-item [routerLink]="['/feature/cat']"
-          [ngStyle]="{'color': color === 'cat' ? 'red' : ''}"
-          (click)="selectedItem('cat')">Continuous Automated Testing</a>
+        <mat-list-item [routerLink]="['/feature/cat']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" >
+          Continuous Automated Testing
+        </mat-list-item>
       </mat-list>
+      
+      
       <mat-list>
         <a mat-list-item [routerLink]="['/feature/iac']"
           [ngStyle]="{'color': color === 'iac' ? 'red' : ''}"
@@ -36,6 +42,15 @@
           (click)="selectedItem('cs')">Continuous Security</a>
       </mat-list>
   
+      <!-- <mat-list>
+        <a mat-list-item [routerLink]="['/feature/dashboard']"
+          [ngStyle]="{'color': color === 'dashboard' ? 'red' : ''}"
+          (click)="selectedItem('dashboard')">Dashboard</a>
+      </mat-list> -->
+      <mat-list>
+        <a mat-list-item [routerLink]="['/feature/dashboard']" (click)="selectedItem('/feature/dashboard')"
+          [ngClass]="{'selected': (dbService.selectedMenuItem$ | async) === '/feature/dashboard'}">Dashboard</a>
+      </mat-list>
   </mat-nav-list>
   
   

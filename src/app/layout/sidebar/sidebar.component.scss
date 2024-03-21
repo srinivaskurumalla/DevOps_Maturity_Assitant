@@ -1,4 +1,8 @@
-.bgClass {
-    background-color: azure;
+mat-list-item {
+    cursor: pointer;
+    // border: 1px solid #8e6071;
 }
 
+mat-list-item.active {
+    background-color: #f0f0f0;
+}

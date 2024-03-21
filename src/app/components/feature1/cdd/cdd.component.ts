@@ -11,5 +11,7 @@ export class CDDComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+saveAll(){
+  
+}
 }

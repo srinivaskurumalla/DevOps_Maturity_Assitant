@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -7,17 +7,20 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
+  @Input() data: any;
+  @Input() identifier: string = ''; // Unique identifier for this instance of the component
+  @Output() selectedValuesChange = new EventEmitter<{item:string, identifier: string; value: number; }>(); // Event emitter to send selected value to parent
 
-  selectedValue: number | null=  null;
-  scores = [1, 3, 5, 8, 10]
-  @Input() data: any
+  selectedValue: number = 0;
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log('data', this.data);
-
   }
 
-
-
+  onChange() {    
+    // Emit the selected value along with the identifier to the parent
+    this.selectedValuesChange.emit({item:'', identifier: this.identifier, value: this.selectedValue });
+  }
+  
 }

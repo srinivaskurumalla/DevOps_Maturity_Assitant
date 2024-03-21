@@ -11,5 +11,7 @@ export class IACComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+saveAll(){
+  
+}
 }

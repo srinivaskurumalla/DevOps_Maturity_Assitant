@@ -11,5 +11,7 @@ export class CMComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+saveAll(){
+  
+}
 }

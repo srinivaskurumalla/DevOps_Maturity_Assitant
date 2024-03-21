@@ -28,6 +28,30 @@ body {
 td[rowspan] {
     vertical-align: middle;
     text-align: center;
-    font-size:xx-large;
+    font-size: xx-large;
     color: green;
-  }
+}
+
+.title {
+    position: relative;
+    top: 25;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 1;
+}
+
+.content {
+    margin-bottom: 50px;
+    height: calc(100vh - 110px);
+    overflow-y: auto;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 1;
+}

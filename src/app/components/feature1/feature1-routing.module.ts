@@ -6,6 +6,7 @@ import { ContinuousIntegrationComponent } from './CI/continuous-integration.comp
 import { CMComponent } from './cm/cm.component';
 import { ConfigurationManagementComponent } from './configuration-management/configuration-management.component';
 import { CSComponent } from './cs/cs.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { IACComponent } from './iac/iac.component';
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'cdd',component:CDDComponent},
   {path:'cm',component:CMComponent},
   {path:'cs',component:CSComponent},
+  {path:'dashboard',component:DashboardComponent},
  
 ];
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 import { DbService } from 'src/app/services/db.service';
 
 @Component({
@@ -9,24 +11,21 @@ import { DbService } from 'src/app/services/db.service';
 export class SidebarComponent implements OnInit {
   selectedOption: boolean = false;
   color = ''
-  constructor(private dbService:DbService) { }
+  constructor(public dbService:DbService,private router: Router,) { }
 
 
   ngOnInit(): void {
-    // this.color = localStorage.getItem('selectedItemColor') || '';
-    
+   
   }
-  logout(): void {
-    //this.authenticationService.logout();
+ 
+  selectedItem(menuItem: string) {
+    this.dbService.setSelectedMenuItem(menuItem);
   }
-  // select(selectedItem: string){
-  //   this.dbService.selecteMenu(selectedItem)
-  // }
-  selectedItem(selectedItem: string): void {
-    debugger
+  // selectedItem(selectedItem: string): void {
+  //   debugger
 
-    this.color = selectedItem;
-    localStorage.setItem('selectedItemColor', this.color);
-  }
+  //   this.color = selectedItem;
+  //   localStorage.setItem('selectedItemColor', this.color);
+  // }
 
 }
