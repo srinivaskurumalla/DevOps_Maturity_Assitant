@@ -20,14 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    ConfigurationManagementComponent,
-    ContinuousIntegrationComponent,
-    CATComponent,
-    IACComponent,
-    CDDComponent,
-    CMComponent,
-    CSComponent,
-    TableComponent
+   
+   // TableComponent
   ],
   imports: [
     BrowserModule,

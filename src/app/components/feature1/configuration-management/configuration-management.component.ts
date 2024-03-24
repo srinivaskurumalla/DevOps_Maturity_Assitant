@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DbService } from 'src/app/services/db.service';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -28,30 +28,42 @@ export class ConfigurationManagementComponent implements OnInit {
 
 
   }
+  @ViewChild('pdfDownload') pdfDownload: ElementRef | undefined;
 
-
-  captureFullPage() {
-    html2canvas(document.body, {
-      scrollX: 0,
-      scrollY: 0,
-      windowWidth: document.documentElement.scrollWidth,
-      windowHeight: document.documentElement.scrollHeight,
-      width: document.documentElement.scrollWidth,
-      height: document.documentElement.scrollHeight
-    }).then(canvas => {
-      // Generate the PDF
-      this.generatePDF(canvas);
-    });
+  downloadPdf() {
+    setTimeout(() => {
+      const data = this.pdfDownload!.nativeElement;
+      html2canvas(data).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight()); // Add width and height parameters
+        pdf.save('downloaded-pdf.pdf');
+      });
+    }, 1000); // Adjust the delay as needed
   }
-  generatePDF(canvas: HTMLCanvasElement) {
-    const imgData = canvas.toDataURL('image/png');
-    const doc = new jsPDF('p', 'mm', 'a4');
-    const imgWidth = doc.internal.pageSize.getWidth();
-    const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-    doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-    doc.save('your-file-name.pdf');
-  }
+  // captureFullPage() {
+  //   html2canvas(document.body, {
+  //     scrollX: 0,
+  //     scrollY: 0,
+  //     windowWidth: document.documentElement.scrollWidth,
+  //     windowHeight: document.documentElement.scrollHeight,
+  //     width: document.documentElement.scrollWidth,
+  //     height: document.documentElement.scrollHeight
+  //   }).then(canvas => {
+  //     // Generate the PDF
+  //     this.generatePDF(canvas);
+  //   });
+  // }
+  // generatePDF(canvas: HTMLCanvasElement) {
+  //   const imgData = canvas.toDataURL('image/png');
+  //   const doc = new jsPDF('p', 'mm', 'a4');
+  //   const imgWidth = doc.internal.pageSize.getWidth();
+  //   const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+  //   doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+  //   doc.save('your-file-name.pdf');
+  // }
 
 
 

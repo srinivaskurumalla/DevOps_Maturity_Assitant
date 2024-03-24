@@ -1,21 +1,25 @@
-<div class="page">
-    <!-- <div *ngFor="let data of scoreData">
+<div #pdfDownload1>
+    <div class="page">
+        <!-- <div *ngFor="let data of scoreData">
         {{data.item}}
         {{data.value}}
     </div> -->
-    <h2 class="title">Configuration Management</h2>
-    <app-table [data]="table1" [identifier]="table1[0].stageDef!" (selectedValuesChange)="updateSelectedValues($event)">
-    </app-table>
-    <app-table [data]="table2" [identifier]="table2[0].stageDef!" (selectedValuesChange)="updateSelectedValues($event)">
-    </app-table>
-</div>
+        <h2 class="title">Configuration Management</h2>
+        <app-table [data]="table1" [identifier]="table1[0].stageDef!"
+            (selectedValuesChange)="updateSelectedValues($event)">
+        </app-table>
+        <app-table [data]="table2" [identifier]="table2[0].stageDef!"
+            (selectedValuesChange)="updateSelectedValues($event)">
+        </app-table>
+    </div>
 
 
-<div class="footer">
-    <div class="text-center">
-        <button (click)="captureFullPage()">Download as PDF</button>
+    <div class="footer">
+        <div class="text-center">
+            <button (click)="downloadPdf()">Download as PDF</button>
 
-        <button type="button" class="btn btn-primary btn-sm me-2"  (click)="saveAll()">Save</button>
-        <a type="button" class="btn btn-secondary btn-sm" [routerLink]="['/feature/ci']">Next</a>
+            <button type="button" class="btn btn-primary btn-sm me-2" (click)="saveAll()">Save</button>
+            <a type="button" class="btn btn-secondary btn-sm" [routerLink]="['/feature/ci']">Next</a>
+        </div>
     </div>
 </div>

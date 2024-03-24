@@ -8,6 +8,7 @@ import { ConfigurationManagementComponent } from './configuration-management/con
 import { CSComponent } from './cs/cs.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IACComponent } from './iac/iac.component';
+import { PdfDownloadComponent } from './pdf-download/pdf-download.component';
 
 const routes: Routes = [
   {path:'config',component:ConfigurationManagementComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'cm',component:CMComponent},
   {path:'cs',component:CSComponent},
   {path:'dashboard',component:DashboardComponent},
+  {path:'pdf-download',component:PdfDownloadComponent},
  
 ];
 

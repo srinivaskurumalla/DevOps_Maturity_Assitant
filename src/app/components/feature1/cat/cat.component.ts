@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import { DbService } from 'src/app/services/db.service';
 
 @Component({
@@ -25,7 +27,19 @@ export class CATComponent implements OnInit {
       }
     )
   }
+  @ViewChild('pdfDownload3') pdfDownload: ElementRef | undefined;
 
+  downloadPdf() {
+    setTimeout(() => {
+      const data = this.pdfDownload!.nativeElement;
+      html2canvas(data).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight()); // Add width and height parameters
+        pdf.save('downloaded-pdf.pdf');
+      });
+    }, 1000); // Adjust the delay as needed
+  }
   // tablesData: any[][] = [
   //   [
   //     {stageDef : 'Automated Testing', practiceStage: 'Basic', description: 'Source code management is not done.', score: 1, value: 1, tooltip: '1', name:val1  },

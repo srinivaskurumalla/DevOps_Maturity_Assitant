@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { DbService } from 'src/app/services/db.service';
 import html2canvas from 'html2canvas';
@@ -28,57 +28,69 @@ export class ContinuousIntegrationComponent implements OnInit {
   }
 
 
+  @ViewChild('pdfDownload2') pdfDownload: ElementRef | undefined;
 
-
-  captureFullPage() {
-    // Set the height of html and body to ensure all content is visible
-    document.documentElement.style.height = 'auto';
-    document.body.style.height = 'auto';
-
-    const fullPageHeight = document.documentElement.scrollHeight;
-    const viewportHeight = window.innerHeight;
-    const numScreenshots = Math.ceil(fullPageHeight / viewportHeight);
-
-    let promiseArray = [];
-    for (let i = 0; i < numScreenshots; i++) {
-      const top = i * viewportHeight;
-      const bottom = Math.min((i + 1) * viewportHeight, fullPageHeight);
-      const promise = html2canvas(document.body, {
-        scrollX: 0,
-        scrollY: top,
-        width: document.documentElement.scrollWidth,
-        height: bottom - top
+  downloadPdf() {
+    setTimeout(() => {
+      const data = this.pdfDownload!.nativeElement;
+      html2canvas(data).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        pdf.addImage(imgData, 'PNG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight()); // Add width and height parameters
+        pdf.save('downloaded-pdf.pdf');
       });
-      promiseArray.push(promise);
-    }
-
-    Promise.all(promiseArray).then((canvases) => {
-      // Merge canvases vertically
-      const totalHeight = canvases.reduce((acc, canvas) => acc + canvas.height, 0);
-      const fullPageCanvas = document.createElement('canvas');
-      fullPageCanvas.width = canvases[0].width;
-      fullPageCanvas.height = totalHeight;
-      const context = fullPageCanvas.getContext('2d');
-      let offsetY = 0;
-      canvases.forEach(canvas => {
-        context?.drawImage(canvas, 0, offsetY);
-        offsetY += canvas.height;
-      });
-
-      // Generate PDF
-      this.generatePDF(fullPageCanvas);
-    });
+    }, 1000); // Adjust the delay as needed
   }
 
-  generatePDF(canvas: HTMLCanvasElement) {
-    const imgData = canvas.toDataURL('image/png');
-    const doc = new jsPDF('p', 'mm', 'a4');
-    const imgWidth = doc.internal.pageSize.getWidth();
-    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  // captureFullPage() {
+  //   // Set the height of html and body to ensure all content is visible
+  //   document.documentElement.style.height = 'auto';
+  //   document.body.style.height = 'auto';
 
-    doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-    doc.save('your-file-name.pdf');
-  }
+  //   const fullPageHeight = document.documentElement.scrollHeight;
+  //   const viewportHeight = window.innerHeight;
+  //   const numScreenshots = Math.ceil(fullPageHeight / viewportHeight);
+
+  //   let promiseArray = [];
+  //   for (let i = 0; i < numScreenshots; i++) {
+  //     const top = i * viewportHeight;
+  //     const bottom = Math.min((i + 1) * viewportHeight, fullPageHeight);
+  //     const promise = html2canvas(document.body, {
+  //       scrollX: 0,
+  //       scrollY: top,
+  //       width: document.documentElement.scrollWidth,
+  //       height: bottom - top
+  //     });
+  //     promiseArray.push(promise);
+  //   }
+
+  //   Promise.all(promiseArray).then((canvases) => {
+  //     // Merge canvases vertically
+  //     const totalHeight = canvases.reduce((acc, canvas) => acc + canvas.height, 0);
+  //     const fullPageCanvas = document.createElement('canvas');
+  //     fullPageCanvas.width = canvases[0].width;
+  //     fullPageCanvas.height = totalHeight;
+  //     const context = fullPageCanvas.getContext('2d');
+  //     let offsetY = 0;
+  //     canvases.forEach(canvas => {
+  //       context?.drawImage(canvas, 0, offsetY);
+  //       offsetY += canvas.height;
+  //     });
+
+  //     // Generate PDF
+  //     this.generatePDF(fullPageCanvas);
+  //   });
+  // }
+
+  // generatePDF(canvas: HTMLCanvasElement) {
+  //   const imgData = canvas.toDataURL('image/png');
+  //   const doc = new jsPDF('p', 'mm', 'a4');
+  //   const imgWidth = doc.internal.pageSize.getWidth();
+  //   const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+  //   doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+  //   doc.save('your-file-name.pdf');
+  // }
 
 
   table1 = [

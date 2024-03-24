@@ -45,6 +45,11 @@
     </mat-list-item>
   </mat-list>
   <mat-list>
+    <mat-list-item [routerLink]="['/feature/pdf-download']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Download
+    </mat-list-item>
+  </mat-list>
+  <mat-list>
     <mat-list-item [routerLink]="['/feature/dashboard']" routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }">
       Dashboard
