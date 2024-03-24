@@ -1,4 +1,4 @@
-<div class="content">
+<div class="page">
     <h2 class="title">Continuous Automated Testing</h2>
 
     <app-table [data]="table1" [identifier]="table1[0].stageDef!" (selectedValuesChange)="updateSelectedValues($event)">
@@ -42,7 +42,7 @@
 <div class="footer">
     <div class="text-center">
         <a type="button" class="btn btn-secondary btn-sm me-2" [routerLink]="['/feature/ci']">Previous</a>
-        <button type="button" class="btn btn-primary btn-sm me-2" (click)="saveAll()">Save</button>
+        <button type="button" class="btn btn-primary btn-sm me-2"  (click)="saveAll()">Save</button>
         <a type="button" class="btn btn-secondary btn-sm" [routerLink]="['/feature/iac']">Next</a>
     </div>
 </div>

@@ -18,9 +18,9 @@ export class SidebarComponent implements OnInit {
    
   }
  
-  selectedItem(menuItem: string) {
-    this.dbService.setSelectedMenuItem(menuItem);
-  }
+  // selectedItem(menuItem: string) {
+  //   this.dbService.setSelectedMenuItem(menuItem);
+  // }
   // selectedItem(selectedItem: string): void {
   //   debugger
 

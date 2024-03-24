@@ -21,6 +21,9 @@
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
     "chart.js": "^4.4.2",
+    "html2canvas": "^1.4.1",
+    "json-server": "^1.0.0-alpha.23",
+    "jspdf": "^2.5.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

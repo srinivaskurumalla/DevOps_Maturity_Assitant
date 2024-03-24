@@ -1,4 +1,8 @@
-<div class="content">
+<div class="page">
+    <!-- <div *ngFor="let data of scoreData">
+        {{data.item}}
+        {{data.value}}
+    </div> -->
     <h2 class="title">Configuration Management</h2>
     <app-table [data]="table1" [identifier]="table1[0].stageDef!" (selectedValuesChange)="updateSelectedValues($event)">
     </app-table>
@@ -9,7 +13,9 @@
 
 <div class="footer">
     <div class="text-center">
-        <button type="button" class="btn btn-primary btn-sm me-2" (click)="saveAll()">Save</button>
+        <button (click)="captureFullPage()">Download as PDF</button>
+
+        <button type="button" class="btn btn-primary btn-sm me-2"  (click)="saveAll()">Save</button>
         <a type="button" class="btn btn-secondary btn-sm" [routerLink]="['/feature/ci']">Next</a>
     </div>
 </div>
