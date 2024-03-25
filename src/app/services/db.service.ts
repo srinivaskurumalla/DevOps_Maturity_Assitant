@@ -7,9 +7,9 @@ import { BehaviorSubject, catchError, Observable, of, switchMap } from 'rxjs';
 })
 export class DbService {
 
-  //private apiUrl = 'http://localhost:3000/centene'
-  private apiUrl = 'src\assets\db.json'
-  isSidebarOpen: boolean = true
+  private apiUrl = 'http://localhost:3000/centene'
+ // private apiUrl = 'src/assets/db.json';
+    isSidebarOpen: boolean = true
   http = inject(HttpClient)
   totalData: any[] = []
   allScores: { item: string, identifier: string, value: number }[] = []
