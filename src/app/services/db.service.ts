@@ -8,7 +8,7 @@ import { BehaviorSubject, catchError, Observable, of, switchMap } from 'rxjs';
 export class DbService {
 
   //private apiUrl = 'http://localhost:3000/centene'
-  private apiUrl = 'assets/db.json'
+  private apiUrl = 'src\assets\db.json'
   isSidebarOpen: boolean = true
   http = inject(HttpClient)
   totalData: any[] = []
@@ -18,43 +18,6 @@ export class DbService {
 
 
 
-  //   addOrUpdateData(data: any[]): Observable<any> {
-  //     return new Observable(observer => {
-  //         this.getDataByItemAndIdentifier(data[0].item).subscribe(
-  //             (dataExists: any[]) => {
-  //                 if (dataExists && dataExists.length > 0) {
-  //                     this.updateData(data).subscribe(
-  //                         (res) => {
-  //                             console.log('Data updated');
-  //                             observer.next(res); // Emitting success response
-  //                             observer.complete(); // Completing the observable
-  //                         },
-  //                         (err) => {
-  //                             console.error('Update error:', err);
-  //                             observer.error(err); // Emitting error
-  //                         }
-  //                     )
-  //                 } else {
-  //                     this.addData(data).subscribe(
-  //                         (res) => {
-  //                             console.log('Data added');
-  //                             observer.next(res); // Emitting success response
-  //                             observer.complete(); // Completing the observable
-  //                         },
-  //                         (err) => {
-  //                             console.error('Add error:', err);
-  //                             observer.error(err); // Emitting error
-  //                         }
-  //                     )
-  //                 }
-  //             },
-  //             (err) => {
-  //                 console.error('Error checking existing data:', err);
-  //                 observer.error(err); // Emitting error
-  //             }
-  //         );
-  //     });
-  // }
 
   addData(data: any): Observable<any> {
     debugger
