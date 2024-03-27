@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ToastModule } from 'primeng/toast';
 
 import { Feature1RoutingModule } from './feature1-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -29,7 +30,7 @@ import { TableComponent } from '../table/table.component';
     ConfigurationManagementComponent,
     IACComponent,
     CSComponent,
-    TableComponent
+    TableComponent,
     //IACComponent,
     //CDDComponent,
    // CMComponent,
@@ -40,7 +41,8 @@ import { TableComponent } from '../table/table.component';
     Feature1RoutingModule,
    FormsModule,
    ReactiveFormsModule,
-   MatTooltipModule
+   MatTooltipModule,
+   ToastModule
   ]
 })
 export class Feature1Module { 

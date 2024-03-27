@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DbService } from './services/db.service';
-
+import { ToastModule } from 'primeng/toast';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

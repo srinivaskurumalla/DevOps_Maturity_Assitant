@@ -9,9 +9,9 @@ import { DbService } from 'src/app/services/db.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  selectedOption: boolean = false;
+  //selectedOption: boolean = false;
   color = ''
-  constructor(public dbService:DbService,private router: Router,) { }
+  constructor(public dbService:DbService) { }
 
 
   ngOnInit(): void {

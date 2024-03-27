@@ -16,7 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TableComponent } from './components/table/table.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,9 +31,10 @@ import { HttpClientModule } from '@angular/common/http';
     LayoutModule,
     FormsModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

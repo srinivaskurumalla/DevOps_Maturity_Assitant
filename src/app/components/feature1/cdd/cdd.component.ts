@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DbService } from 'src/app/services/db.service';
 
 @Component({
@@ -9,7 +9,8 @@ import { DbService } from 'src/app/services/db.service';
 export class CDDComponent implements OnInit {
 
   existingData: any[] = []
-
+  @Input() showFooter1 : boolean = true
+  showFooter : boolean = true
   constructor(private dbService: DbService) { }
 
   ngOnInit(): void {

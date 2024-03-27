@@ -10,12 +10,14 @@ import {MatListModule} from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { HomeComponent } from '../components/feature1/home/home.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatTooltipModule,
     MatSidenavModule,
     RouterModule.forRoot([
+
       { path: 'header', component: HeaderComponent},
     ]),
   ],

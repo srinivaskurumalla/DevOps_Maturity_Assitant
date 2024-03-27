@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { BehaviorSubject, catchError, Observable, of, switchMap } from 'rxjs';
 
 @Injectable({
@@ -8,15 +9,31 @@ import { BehaviorSubject, catchError, Observable, of, switchMap } from 'rxjs';
 export class DbService {
 
   private apiUrl = 'http://localhost:3000/centene'
- // private apiUrl = 'src/assets/db.json';
-    isSidebarOpen: boolean = true
+
+
+  // private apiUrl = 'src/assets/db.json';
+  isSidebarOpen: boolean = true
   http = inject(HttpClient)
   totalData: any[] = []
   allScores: { item: string, identifier: string, value: number }[] = []
-
+  messageService = inject(MessageService)
   constructor() { }
 
+  showSuccess(msg:string) {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: msg });
+  }
 
+  showInfo(msg:string) {
+    this.messageService.add({ severity: 'info', summary: 'Info', detail: msg });
+  }
+
+  showWarn(msg:string) {
+    this.messageService.add({ severity: 'warn', summary: 'Warn', detail: msg });
+  }
+
+  showError(msg:string) {
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: msg });
+  }
 
 
   addData(data: any): Observable<any> {
@@ -24,7 +41,7 @@ export class DbService {
     //const dataWithId = data.map((item, index) => ({ id: index + 1, ...item }));
     return this.http.post<any>(this.apiUrl, data);
   }
-  updateData(data: any, id:number): Observable<any> {
+  updateData(data: any, id: number): Observable<any> {
     debugger
     return this.http.put<any>(`${this.apiUrl}/${id}`, data);
 

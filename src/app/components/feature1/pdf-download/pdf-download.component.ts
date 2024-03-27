@@ -9,7 +9,7 @@ import jsPDF from 'jspdf';
 })
 export class PdfDownloadComponent {
   @ViewChild('pdfPages') pdfPages: ElementRef<HTMLDivElement> | undefined;
-
+showFooter : boolean = false
   downloadPdf() {
     if (!this.pdfPages) {
       console.error('PDF pages container reference is undefined.');

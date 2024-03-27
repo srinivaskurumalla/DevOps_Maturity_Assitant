@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { DbService } from 'src/app/services/db.service';
@@ -11,7 +11,8 @@ import { DbService } from 'src/app/services/db.service';
 export class CATComponent implements OnInit {
 
   existingData: any[] = []
-
+  @Input() showFooter1 : boolean = true
+  showFooter : boolean = true
   constructor(private dbService: DbService) { }
 
   ngOnInit(): void {

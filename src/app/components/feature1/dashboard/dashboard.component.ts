@@ -111,13 +111,14 @@ export class DashboardComponent implements OnInit {
     new Chart(id, {
       type: type,
       data: {
-        labels: this.items,//this.shortCuts, // Update labels as needed
+        labels: this.shortCuts,//this.items, // Update labels as needed
         datasets: [
           
           {
             label: 'Total Score', // Label for total scores
             data: totalScores,
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            
+           // backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1
           },

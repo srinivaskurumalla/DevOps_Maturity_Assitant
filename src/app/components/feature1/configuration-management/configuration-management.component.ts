@@ -1,17 +1,19 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { DbService } from 'src/app/services/db.service';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-
 @Component({
   selector: 'app-configuration-management',
   templateUrl: './configuration-management.component.html',
   styleUrls: ['./configuration-management.component.scss']
 })
 export class ConfigurationManagementComponent implements OnInit {
+  showToast: boolean = false;
 
   constructor(private dbService: DbService) { }
   existingData: any[] = []
+  @Input() showFooter1: boolean = true
+  showFooter: boolean = true
   ngOnInit(): void {
     // Fetch previously saved scores from the JSON server
     this.dbService.getDataByItemAndIdentifier('Configuration Management',).subscribe(
@@ -30,6 +32,15 @@ export class ConfigurationManagementComponent implements OnInit {
   }
   @ViewChild('pdfDownload') pdfDownload: ElementRef | undefined;
 
+
+  show(): void {
+    this.showToast = true;
+    setTimeout(() => this.hideToast(), 3000); // Hide toast after 3 seconds
+  }
+
+  hideToast(): void {
+    this.showToast = false;
+  }
   downloadPdf() {
     setTimeout(() => {
       const data = this.pdfDownload!.nativeElement;
@@ -102,7 +113,7 @@ export class ConfigurationManagementComponent implements OnInit {
   saveAll() {
     // You can implement the logic to save all selected values here
     console.log('All selected values:', this.selectedValues);
-   
+
     this.selectedValues.forEach(val => {
       const matchingexistingData = this.existingData.find(score => score.id === val.id);
 
@@ -110,22 +121,27 @@ export class ConfigurationManagementComponent implements OnInit {
         //do update
         this.dbService.updateData(val, val.id).subscribe(
           (response) => {
-            console.log('Update Operation completed successfully:', response);
+            this.dbService.showSuccess('Data Updated')
           },
           (error) => {
             console.error('Error occurred:', error);
+            this.dbService.showError('Error while update')
           });
       }
 
       else {
         //do add
-        
+
         this.dbService.addData(val).subscribe(
           (response) => {
+            this.dbService.showSuccess('Data Added')
+
             console.log('Add Operation completed successfully:', response);
           },
           (error) => {
-            console.error('Error occurred:', error);
+            this.dbService.showError('Error while saving')
+
+            console.warn('Error occurred:', error);
           });
       }
     })
