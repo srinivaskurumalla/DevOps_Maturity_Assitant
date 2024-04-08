@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   @Output() sidebarToggle = new EventEmitter<void>();
-  // @ViewChild(MatMenuTrigger) trigger!: MatMenuTrigger;
 
   constructor(private router: Router) { }
 
@@ -16,26 +15,5 @@ export class HeaderComponent {
     this.sidebarToggle.emit();
   }
 
-  onLoginClick() {
-    console.log('Login link clicked');
-  }
 
-  viewProfile() {
-
-  }
-  logout() {
-
-  }
-
-  onLogOutClick() {
-  }
-  onUserProfileClick() {
-    // this.router.navigate(['/profile']);
-
-  }
-
-  //n
-  isUserAuthenticated(): boolean {
-    return true
-  }
 }

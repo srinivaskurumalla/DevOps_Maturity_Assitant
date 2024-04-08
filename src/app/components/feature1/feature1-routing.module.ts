@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { IACComponent } from './iac/iac.component';
 import { PdfDownloadComponent } from './pdf-download/pdf-download.component';
+import { ReviewComponent } from './review/review.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent,pathMatch:'full'},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'cs',component:CSComponent},
   {path:'dashboard',component:DashboardComponent},
   {path:'pdf-download',component:PdfDownloadComponent},
+  {path:'review',component:ReviewComponent},
  
 ];
 

@@ -133,9 +133,9 @@ export class ContinuousIntegrationComponent implements OnInit {
     { id: 20501, stageDef: 'Notifications during CI', practiceStage: 'Mature', description: 'We have mechanisms in place to alert a set of team members in case the CI tool comes across either a bad build or failed unit tests.', score: 8, value: 8, tooltip: '8', name: 'val5' },
     { id: 20501, stageDef: 'Notifications during CI', practiceStage: 'Optmized', description: 'We will stop the build process for all developers if there are build failures and/or failed unit test cases. We only restart once the failures have been addressed and resolved.', score: 10, value: 10, tooltip: '10', name: 'val5' },
   ];
-  selectedValues: { id: number, item: string, identifier: string, value: number }[] = []; // Array to store selected values
-  updateSelectedValues(selectedValue: { id: number, item: string, identifier: string, value: number }) {
-    // Update the selected values array with the emitted value
+  selectedValues: { id: number,practiceStage : string, item: string, identifier: string, value: number }[] = []; // Array to store selected values
+  updateSelectedValues(selectedValue: { id: number,practiceStage : string, item: string, identifier: string, value: number }) {
+     // Update the selected values array with the emitted value
     const index = this.selectedValues.findIndex(item => item.identifier === selectedValue.identifier);
     selectedValue.item = 'Continuous Integration'
 
@@ -151,7 +151,7 @@ export class ContinuousIntegrationComponent implements OnInit {
   saveAll() {
     // You can implement the logic to save all selected values here
     console.log('All selected values:', this.selectedValues);
-   
+
     this.selectedValues.forEach(val => {
       const matchingexistingData = this.existingData.find(score => score.id === val.id);
 
@@ -159,28 +159,34 @@ export class ContinuousIntegrationComponent implements OnInit {
         //do update
         this.dbService.updateData(val, val.id).subscribe(
           (response) => {
-            console.log('Update Operation completed successfully:', response);
+            this.dbService.showSuccess('Data Updated')
           },
           (error) => {
             console.error('Error occurred:', error);
+            this.dbService.showError('Error while update')
           });
       }
 
       else {
         //do add
-        
+
         this.dbService.addData(val).subscribe(
           (response) => {
+            this.dbService.showSuccess('Data Added')
+
             console.log('Add Operation completed successfully:', response);
           },
           (error) => {
-            console.error('Error occurred:', error);
+            this.dbService.showError('Error while saving')
+
+            console.warn('Error occurred:', error);
           });
       }
     })
 
 
   }
+
 
   // saveAll() {
   //   // You can implement the logic to save all selected values here

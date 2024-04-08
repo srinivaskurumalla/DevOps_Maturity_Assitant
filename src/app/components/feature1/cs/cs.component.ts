@@ -67,9 +67,9 @@ export class CSComponent implements OnInit {
   {id: 70501, stageDef: 'Production', practiceStage: 'Mature', description: 'Tools are available. We are using Verica - Production Chanos which is used to make systems more secure and less vulnerable to costly incidents. Notifications are received. But there are no Dashboards and reports for continuous improvements based on the feedback.', score: 8, value: 8, tooltip: '8', name: 'val4' },
   {id: 70501, stageDef: 'Production', practiceStage: 'Optmized', description: 'All Tools are available. We have customized notifications, cutsomized policies, Custom isolation policies and we have Hackerone-PT to receive, manage and track the incoming vulnerability disclores with the industry’s most trusted and reputable ethical hackers.', score: 10, value: 10, tooltip: '10', name: 'val4' },
 ];
-selectedValues: { id: number, item: string, identifier: string, value: number }[] = []; // Array to store selected values
-updateSelectedValues(selectedValue: { id: number, item: string, identifier: string, value: number }) {
-  // Update the selected values array with the emitted value
+selectedValues: { id: number,practiceStage : string, item: string, identifier: string, value: number }[] = []; // Array to store selected values
+updateSelectedValues(selectedValue: { id: number,practiceStage : string, item: string, identifier: string, value: number }) {
+ // Update the selected values array with the emitted value
   const index = this.selectedValues.findIndex(item => item.identifier === selectedValue.identifier);
   selectedValue.item = 'Continuous Security'
 
@@ -92,10 +92,11 @@ saveAll() {
       //do update
       this.dbService.updateData(val, val.id).subscribe(
         (response) => {
-          console.log('Update Operation completed successfully:', response);
+          this.dbService.showSuccess('Data Updated')
         },
         (error) => {
           console.error('Error occurred:', error);
+          this.dbService.showError('Error while update')
         });
     }
 
@@ -104,14 +105,19 @@ saveAll() {
 
       this.dbService.addData(val).subscribe(
         (response) => {
+          this.dbService.showSuccess('Data Added')
+
           console.log('Add Operation completed successfully:', response);
         },
         (error) => {
-          console.error('Error occurred:', error);
+          this.dbService.showError('Error while saving')
+
+          console.warn('Error occurred:', error);
         });
     }
   })
 
 
 }
+
 }

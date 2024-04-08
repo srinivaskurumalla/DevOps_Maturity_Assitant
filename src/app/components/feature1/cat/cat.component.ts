@@ -155,9 +155,9 @@ export class CATComponent implements OnInit {
   ];
 
   // selectedValues: number[] = new Array(this.tablesData[0].length).fill(0); // Assuming all tables have the same number of rows
-  selectedValues: { id: number, item: string, identifier: string, value: number }[] = []; // Array to store selected values
-  updateSelectedValues(selectedValue: { id: number, item: string, identifier: string, value: number }) {
-   // Update the selected values array with the emitted value
+  selectedValues: { id: number,practiceStage : string, item: string, identifier: string, value: number }[] = []; // Array to store selected values
+  updateSelectedValues(selectedValue: { id: number,practiceStage : string, item: string, identifier: string, value: number }) {
+    // Update the selected values array with the emitted value
     const index = this.selectedValues.findIndex(item => item.identifier === selectedValue.identifier);
     selectedValue.item = 'Continuous Automated Testing'
 
@@ -184,7 +184,7 @@ export class CATComponent implements OnInit {
   saveAll() {
     // You can implement the logic to save all selected values here
     console.log('All selected values:', this.selectedValues);
-   
+
     this.selectedValues.forEach(val => {
       const matchingexistingData = this.existingData.find(score => score.id === val.id);
 
@@ -192,27 +192,33 @@ export class CATComponent implements OnInit {
         //do update
         this.dbService.updateData(val, val.id).subscribe(
           (response) => {
-            console.log('Update Operation completed successfully:', response);
+            this.dbService.showSuccess('Data Updated')
           },
           (error) => {
             console.error('Error occurred:', error);
+            this.dbService.showError('Error while update')
           });
       }
 
       else {
         //do add
-        
+
         this.dbService.addData(val).subscribe(
           (response) => {
+            this.dbService.showSuccess('Data Added')
+
             console.log('Add Operation completed successfully:', response);
           },
           (error) => {
-            console.error('Error occurred:', error);
+            this.dbService.showError('Error while saving')
+
+            console.warn('Error occurred:', error);
           });
       }
     })
 
 
   }
+
 
 }

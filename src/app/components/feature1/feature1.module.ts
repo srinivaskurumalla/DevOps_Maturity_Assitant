@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
-
+import { TableModule } from 'primeng/table';
 import { Feature1RoutingModule } from './feature1-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -15,6 +15,7 @@ import { CATComponent } from './cat/cat.component';
 import { IACComponent } from './iac/iac.component';
 import { CSComponent } from './cs/cs.component';
 import { TableComponent } from '../table/table.component';
+import { ReviewComponent } from './review/review.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { TableComponent } from '../table/table.component';
     IACComponent,
     CSComponent,
     TableComponent,
+    ReviewComponent,
     //IACComponent,
     //CDDComponent,
    // CMComponent,
@@ -42,7 +44,8 @@ import { TableComponent } from '../table/table.component';
    FormsModule,
    ReactiveFormsModule,
    MatTooltipModule,
-   ToastModule
+   ToastModule,
+   TableModule
   ]
 })
 export class Feature1Module { 

@@ -10,7 +10,7 @@ export class TableComponent implements OnInit {
 
   @Input() data: any;
   @Input() identifier: string = ''; // Unique identifier for this instance of the component
-  @Output() selectedValuesChange = new EventEmitter<{ id: number, item: string, identifier: string; value: number; }>(); // Event emitter to send selected value to parent
+  @Output() selectedValuesChange = new EventEmitter<{ id: number,practiceStage : string, item: string, identifier: string; value: number; }>(); // Event emitter to send selected value to parent
 
   selectedValue: number = 0;
   matchedData: any[] = []
@@ -71,7 +71,7 @@ export class TableComponent implements OnInit {
 
   onChange(item: any) {
     // Emit the selected value along with the identifier to the parent
-    this.selectedValuesChange.emit({ id: item.id, item: '', identifier: this.identifier, value: this.selectedValue });
+    this.selectedValuesChange.emit({ id: item.id, practiceStage : item.practiceStage, item: '', identifier: this.identifier, value: this.selectedValue });
   }
 
 }

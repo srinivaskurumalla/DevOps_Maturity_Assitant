@@ -50,6 +50,11 @@
     </mat-list-item>
   </mat-list>
   <mat-list>
+    <mat-list-item [routerLink]="['/feature/review']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Review
+    </mat-list-item>
+  </mat-list>
+  <mat-list>
     <mat-list-item [routerLink]="['/feature/dashboard']" routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }">
       Dashboard

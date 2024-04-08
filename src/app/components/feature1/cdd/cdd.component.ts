@@ -66,9 +66,9 @@ export class CDDComponent implements OnInit {
     { id: 50501, stageDef: 'Deployment capabilities', practiceStage: 'Mature', description: 'We have a no-downtime approach where we first deploy to a canary environment, test it, and on successful completion upgrade servers one at a time until the deployment is complete.', score: 8, value: 8, tooltip: '8', name: 'val5' },
     { id: 50501, stageDef: 'Deployment capabilities', practiceStage: 'Optmized', description: 'We ensure there is no downtime for our application servers through the use of Blue-Green deployment strategy.', score: 10, value: 10, tooltip: '10', name: 'val5' },
   ];
-  selectedValues: { id: number, item: string, identifier: string, value: number }[] = []; // Array to store selected values
-  updateSelectedValues(selectedValue: { id: number, item: string, identifier: string, value: number }) {
-    // Update the selected values array with the emitted value
+  selectedValues: { id: number,practiceStage : string, item: string, identifier: string, value: number }[] = []; // Array to store selected values
+  updateSelectedValues(selectedValue: { id: number,practiceStage : string, item: string, identifier: string, value: number }) {
+     // Update the selected values array with the emitted value
     const index = this.selectedValues.findIndex(item => item.identifier === selectedValue.identifier);
     selectedValue.item = 'Continuous Delivery and Deployment'
 
@@ -91,10 +91,11 @@ export class CDDComponent implements OnInit {
         //do update
         this.dbService.updateData(val, val.id).subscribe(
           (response) => {
-            console.log('Update Operation completed successfully:', response);
+            this.dbService.showSuccess('Data Updated')
           },
           (error) => {
             console.error('Error occurred:', error);
+            this.dbService.showError('Error while update')
           });
       }
 
@@ -103,14 +104,19 @@ export class CDDComponent implements OnInit {
 
         this.dbService.addData(val).subscribe(
           (response) => {
+            this.dbService.showSuccess('Data Added')
+
             console.log('Add Operation completed successfully:', response);
           },
           (error) => {
-            console.error('Error occurred:', error);
+            this.dbService.showError('Error while saving')
+
+            console.warn('Error occurred:', error);
           });
       }
     })
 
 
   }
+
 }

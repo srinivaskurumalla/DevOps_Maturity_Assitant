@@ -67,9 +67,9 @@ export class CMComponent implements OnInit {
     {id: 60501, stageDef: 'Alerting solution', practiceStage: 'Optmized', description: '(Mature) + Alerting thresholds are easily modifiable, and we follow Site Reliability Engineering practices to ensure the proper SLO, SLI and Error Budgets are maintained.', score: 10, value: 10, tooltip: '10', name: 'val5' },
   ];
 
-  selectedValues: { id: number, item: string, identifier: string, value: number }[] = []; // Array to store selected values
-  updateSelectedValues(selectedValue: { id: number, item: string, identifier: string, value: number }) {
-    // Update the selected values array with the emitted value
+  selectedValues: { id: number,practiceStage : string, item: string, identifier: string, value: number }[] = []; // Array to store selected values
+  updateSelectedValues(selectedValue: { id: number,practiceStage : string, item: string, identifier: string, value: number }) {
+     // Update the selected values array with the emitted value
     const index = this.selectedValues.findIndex(item => item.identifier === selectedValue.identifier);
     selectedValue.item = 'Continuous Monitoring'
 
@@ -92,10 +92,13 @@ export class CMComponent implements OnInit {
         //do update
         this.dbService.updateData(val, val.id).subscribe(
           (response) => {
+            this.dbService.showSuccess('Data Updated')
             console.log('Update Operation completed successfully:', response);
+
           },
           (error) => {
             console.error('Error occurred:', error);
+            this.dbService.showError('Error while update')
           });
       }
 
@@ -104,14 +107,19 @@ export class CMComponent implements OnInit {
 
         this.dbService.addData(val).subscribe(
           (response) => {
+            this.dbService.showSuccess('Data Added')
+
             console.log('Add Operation completed successfully:', response);
           },
           (error) => {
-            console.error('Error occurred:', error);
+            this.dbService.showError('Error while saving')
+
+            console.warn('Error occurred:', error);
           });
       }
     })
 
 
   }
+
 }

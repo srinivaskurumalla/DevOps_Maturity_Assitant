@@ -44,9 +44,9 @@ export class IACComponent implements OnInit {
     { id: 40201, stageDef: 'Use of containers', practiceStage: 'Optmized', description: 'We have a microservices architecture, which is containerized, with each container having integrated auto-scale capability on dynamically provisioned infrastructure.', score: 10, value: 10, tooltip: '10', name: 'val2' },
   ];
 
-  selectedValues: { id: number, item: string, identifier: string, value: number }[] = []; // Array to store selected values
-  updateSelectedValues(selectedValue: { id: number, item: string, identifier: string, value: number }) {
-    // Update the selected values array with the emitted value
+  selectedValues: { id: number,practiceStage : string, item: string, identifier: string, value: number }[] = []; // Array to store selected values
+  updateSelectedValues(selectedValue: { id: number,practiceStage : string, item: string, identifier: string, value: number }) {
+     // Update the selected values array with the emitted value
     const index = this.selectedValues.findIndex(item => item.identifier === selectedValue.identifier);
     selectedValue.item = 'Infrastructure as a code'
     if (index !== -1) {
@@ -68,10 +68,11 @@ export class IACComponent implements OnInit {
         //do update
         this.dbService.updateData(val, val.id).subscribe(
           (response) => {
-            console.log('Update Operation completed successfully:', response);
+            this.dbService.showSuccess('Data Updated')
           },
           (error) => {
             console.error('Error occurred:', error);
+            this.dbService.showError('Error while update')
           });
       }
 
@@ -80,14 +81,19 @@ export class IACComponent implements OnInit {
 
         this.dbService.addData(val).subscribe(
           (response) => {
+            this.dbService.showSuccess('Data Added')
+
             console.log('Add Operation completed successfully:', response);
           },
           (error) => {
-            console.error('Error occurred:', error);
+            this.dbService.showError('Error while saving')
+
+            console.warn('Error occurred:', error);
           });
       }
     })
 
 
   }
+
 }
